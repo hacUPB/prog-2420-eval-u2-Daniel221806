@@ -82,3 +82,5 @@ N = GenerarNumeroAleatorio(1,29)
 NA = N + AA
 
 imprimir "Querido" G, N, AP " su reserva se ha confirmado. Volarás el día " D, F " de " M " desde "  CO " hasta " CD ". Tu boleto tiene un valor de $" P ". Tu asiento es " NA ". ¡Gracias por volar con TortugüitaFly!"
+
+FIN

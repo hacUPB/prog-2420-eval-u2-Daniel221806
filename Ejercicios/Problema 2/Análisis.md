@@ -1,0 +1,5 @@
+# **SIMULACIÓN DE ORBITA DE UN SATÉLITE**
+
+___
+
+El ejercicio propuesto sugiere la programación de un algoritmo que permita determinar si un satélite logró estabilizar su órbita alrededor de la tierra o si se desintegra debido a la resistencia atmosférica. Para lo anterior, se contará con las siguientes variables ingresadas por el usuario: Altitud inicial del satélite (AI), Coeficiente de arrastre (CA) y Altitud mínima de seguridad (AM). Para el desarrollo del programa se utilizará un bucle en el que cada repetición será tomada como una órbita, está será almacenada en el contador (O). Se creará una nueva variable para el mientras (NAM) que inicialmente tendrá el valor de AI. En cada ciclo se calculara la Altitud perdida (AP) que le será restada a NAM. Si AP es muy pequeña antes de alcanzar NAM sea igual a AM, se entenderá que el satélite se estabilizó, por lo que, haciendo uso de un condicional, se saldrá del bucle. Final,mente, se de le deberá informar al usuario si el satélite se estabilizó o se desintegró con la atmosfera terrestre.
