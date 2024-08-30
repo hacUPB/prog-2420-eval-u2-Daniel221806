@@ -18,11 +18,11 @@ Mientras NAM > AM
     CA = CA + 0,0001
     O = O + 1
     NA = NAM
-    Si AP < 0,00001
+    Si AP < 0,0000001
         NAM = AM - 1
     fin si
 fin mientras
-Si Ap < 0,00001
+Si Ap < 0,0000001
     Imprimir "El satélite se ha estabilizado luego de " O " órbitas completadas. La altitud final alcanzada fue de: " NA
 Si no
     Imprimir "El satélite ha reingresado a la atmósfera terrestre luego de " O " órbitas."
