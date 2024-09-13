@@ -1,10 +1,12 @@
 from os import system
 import datetime
+import random
 
 def Respuesta_Destino(Ciudad_Destino, Posibles_Ciudades):
     while True:
         Respuesta_1 = Ciudad_Destino
         Ciudad_Destino = Ciudad_Destino.upper()
+        system("cls")
         if Ciudad_Destino in Posibles_Ciudades:
             print(f"Muy bien, has elegido {Respuesta_1}.")
             break
@@ -13,7 +15,7 @@ def Respuesta_Destino(Ciudad_Destino, Posibles_Ciudades):
             Ciudad_Destino = str(input(f"Elije una de las ciudades a las cuales podemos llevarte {Posibles_Ciudades}: "))
     
     return Respuesta_1
-    
+
 
 
 def main():
@@ -49,7 +51,6 @@ def main():
             print(f"Lamentablemente no volamos desde {Respuesta}. Intenta de nuevo.")
 
     while True:
-        system("cls")
         print("Ahora indica tu ciudad de destino: ")
 
         if Ciudad_Origen == "MEDELLIN":
@@ -70,14 +71,83 @@ def main():
     
     # Preguntaremos al cliente qué día quiere viajar
 
+    Fecha_Ingresada = input("Indica a fecha en la que quieres viajar (dd/mm/aaaa): ")
+    Fecha_Vuelo = datetime.datetime.strptime(Fecha_Ingresada, "%d/%m/%Y")
+    system("cls")
+
+    Días_Semana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+    Meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agoto", "septiembre", "octubre", "noviembre", "diciembre"]
+    
+    Día_Semana = Fecha_Vuelo.weekday()
+    Día_Vuelo = Días_Semana[Día_Semana]
+    Día = Fecha_Vuelo.day
+    Mes_Vuelo = Meses[Fecha_Vuelo.month - 1]
+    Año_Vuelo = Fecha_Vuelo.year
+
+    print(f"¡Viajarás con TortugüitaFly el día {Día_Vuelo} {Día} de {Mes_Vuelo} del {Año_Vuelo}!")
+
+    # Determinamos el valor del pasaje
+
+    if Ciudad_Origen == "MEDELLIN":
+        if Ciudad_Destino == "BOGOTA":
+            Distancia_Ciudades = 240
+        else:
+            Distancia_Ciudades = 461
+    elif Ciudad_Origen == "BOGOTA":
+        if Ciudad_Destino == "MEDELLIN":
+            Distancia_Ciudades = 240
+        else:
+            Distancia_Ciudades = 657
+    elif Ciudad_Origen == "CARTAGENA":
+        if Ciudad_Destino == "MEDELLIN":
+            Distancia_Ciudades = 461
+        else:
+            Distancia_Ciudades = 657
+
+    if Distancia_Ciudades < 400:
+        if Día_Semana < 4:
+            Precio = "79.900"
+        else:
+            Precio = "119.900"
+    else:
+        if Día_Semana < 4:
+            Precio = "156.900"
+        else:
+            Precio = "213.000"
+    
+    # Preguntamos al usuario su preferencia de silla
+
+    Posibles_Asientos = ["VENTANA", "PASILLO", "SIN PREFERENCIA", "SINPREFERENCIA"]
+
     while True:
-        Fecha_Ingresada= input("Indica a fecha en la que quieres viajar (dd/mm/aaaa): ")
-        Fecha_Vuelo = datetime.datetime.strptime(Fecha_Ingresada, "%d/%m/%Y")
-        if Fecha_Vuelo < datetime.now():
-            print("En TortugüitaFly ofrecemos un excelente servicio, pero en este momento no podemos llevarte al pasado. Por Favor, selecciona una fecha válida")
+
+        Asiento = str(input("Elije tu asiento de preferencia (ventana, pasillo, sin preferencia): "))
+
+        system("cls")
+
+        Respuesta2 = Asiento
+        Asiento = Asiento.upper()
+
+        if Asiento in Posibles_Asientos:
+            print(f"Muy bien, has elegido {Respuesta2}.")
+            break
+        else:
+            print(f"{Respuesta2} no es una opción válida. Intenta de nuevo.")
+
+    if Asiento == "VENTANA":
+        Asiento_Asignado = "A"
+    else:
+        if Asiento == "PASILLO":
+            Asiento_Asignado = "C"
+        else:
+            Asiento_Asignado = "B"
     
-            
-    
+    Número_Fila = random.randint(1,29)
+
+    # Finalmente, informamos al usuario de la reserva que ha generado
+
+    print(f"{Genero}, {Nombre} {Apellido}, tu reserva se ha confirmado. Volarás el día {Día_Vuelo} {Día} de {Mes_Vuelo} del {Año_Vuelo} desde {Ciudad_Origen} hasta {Ciudad_Destino}. Tu boleto tiene un valor de ${Precio}. Te corresponde el asiento {Número_Fila}{Asiento_Asignado}. ¡Gracias por volar con TortugüitaFLy!") 
+ 
     
 
 if __name__ == "__main__":
