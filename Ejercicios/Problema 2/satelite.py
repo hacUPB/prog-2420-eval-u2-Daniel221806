@@ -23,6 +23,8 @@ def main():
         Contador_Orbitas += 1
         Nueva_Altitud = Nueva_Altitud_Inicial
 
+        print(f"El satélite ha completado la orbita {Contador_Orbitas} llegando a una altitud de {Nueva_Altitud}km.")
+
         if Altitud_Perdida < (0.001):
             break
 
